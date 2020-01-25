@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style2.css">
+</head>
+<body>
+    <div class="wrapper">
+
+        <form>
+        <label for='textbox'>To Do List</label>
+        <input name='textbox' type='text' class='texting' />
+        </form>
+        <div id="button">Add Item</div>
+        
+        <div class="toList">
+        </div><!--toList-->
+            
+    </div><!--wrapper-->
+
+
+     <script src="assets/js/js.js"></script>           
+    <script>
+    $(document).ready(myClick);
+
+
+        function myClick(){
+            $('#button').click(myAdd);
+            $(document).on('click','.del',myRemove);
+            // $(document).on('click','#myCheck',taskDone);
+        }
+    
+    function myAdd(){
+        var listItem = $('input[name=textbox]').val();
+            if(listItem==''){
+                    alert("please enter some task firast!!")
+                }
+            else{       
+                $('.toList').append('<div class="item"><input type="checkbox" name="done" id="myCheck")><label for="myCheck">' + listItem + '</label><span class="del">X</span></div>');
+                $('input').val('');
+            }
+    }
+    
+
+    // function taskDone(){
+    //     var checkBox = document.getElementById("myCheck");
+    //     if (checkBox.checked == true){
+    //         alert('ok')
+    //         $(this).parent('.item').children('.text').addClass("strike");
+            
+    //     } else {
+    //         $(this).parent('.item').children('.text').removeClass("strike");
+    //     }
+               
+    // }
+    
+    function myRemove(){
+        $(this).parent('.item').remove(); 
+    }
+
+
+    </script>                
+</body>
+</html>
